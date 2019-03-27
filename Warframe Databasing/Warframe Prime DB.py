@@ -61,30 +61,38 @@ def print_menu():
     print("3: Primary Prime List")
     print("4: Secondary Prime List")
     print("5: Melee Prime List")
-    print("6: Add Prime to List")
-    print("7: Edit Already Existing Entry")
-    print("8: Print Mastered")
-    print("9: Print Unmastered")
+    print("6: Other Prime List")
+    print("7: Add Prime to List")
+    print("8: Edit Already Existing Entry")
+    print("9: Print Mastered")
+    print("10: Print Unmastered")
     print("-1: Exit")
 
 def menu_input(cmd, objs):
     if cmd == 1:
         print_all(objs)
     elif cmd == 2:
-        warfr_print(objs)
+        categ = 'Warframe'
+        type_print(objs, categ)
     elif cmd == 3:
-        pass
+        categ = 'Primary'
+        type_print(objs, categ)
     elif cmd == 4:
-        pass
+        categ = 'Secondary'
+        type_print(objs, categ)
     elif cmd == 5:
-        pass    
+        categ = 'Melee'
+        type_print(objs, categ)
     elif cmd == 6:
-        pass
+        categ = 'Other'
+        type_print(objs, categ)
     elif cmd == 7:
         pass
     elif cmd == 8:
         pass
     elif cmd == 9:
+        pass
+    elif cmd == 10:
         pass
 
 def print_header():
@@ -101,13 +109,13 @@ def print_all(data):
         data[i].print_str() ##use align, call string func for indiv. data
     print()
 
-def warfr_print(data):
+def type_print(data, categ):
     print()
-    print("{:-^75}".format(" Commplete Prime Warframe List "))
+    print("{:-^75s}".format(" Commplete Prime {:s} List ".format(categ)))
     print_header()
     for i in range(len(data)):
         print
-        if(data[i].get_wType()) == 'Warframe':
+        if(data[i].get_wType()) == categ:
             data[i].print_str()
     print()
 
