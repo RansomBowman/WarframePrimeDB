@@ -89,7 +89,8 @@ def menu_input(cmd, objs):
 
 def print_header():
     print("-" * 75)
-    print("{:<20s}".format("Name"))
+    print("{:<20s}{:<15s}{:<10s}{:<10s}{:<10s}".format(\
+        "Name", "Type", "Mastered", "Vaulted", "Components"))
     print("-" * 75)
     
 def print_all(data):
@@ -111,10 +112,26 @@ def warfr_print(data):
     print()
 
 
-
-
 def sortItems(data):
-    pass
+    sortItemsAlpha(data)
+    sortItemsType(data)
+
+
+def sortItemsType(data):
+    for i in range(len(data) - 1):
+        if data[i][1] > data[i+1][1]:
+            temp = data[i]
+            data[i] = data[i+1]
+            data[i+1] = temp
+            sortItemsType(data)
+            
+def sortItemsAlpha(data):
+    for i in range(len(data) - 1):
+        if data[i][0] > data[i+1][0]:
+            temp = data[i]
+            data[i] = data[i+1]
+            data[i+1] = temp
+            sortItemsAlpha(data)
 
 def main():
     f = open("weap_data.txt", 'r+')
@@ -126,14 +143,14 @@ def main():
 
     for n in range(len(data)):
         data[n] = data[n].split(",")
-        
-    list_of_w = []
 
+    sortItems(data)
+
+    list_of_w = []
+    
     for i in range(len(data)): ##check object class
         newW = Weapon(data[i][0], data[i][1], data[i][2], data[i][3], data[i][4])
         list_of_w.append(newW)
-
-    sortItems(list_of_w)
     
     userCMD = 0
     while userCMD != -1:
