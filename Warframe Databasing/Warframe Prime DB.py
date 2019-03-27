@@ -1,4 +1,3 @@
-##Hello!
 import string
 
 class Weapon:
