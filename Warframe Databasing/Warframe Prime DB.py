@@ -10,8 +10,10 @@ class Weapon:
         self.comp = comp
 
     def print_str(self):
-        return print(str(self.name + " " + self.wType + " " + self.mast + " " + self.vault
-                   + " " +  self.comp)) ##Use frmt alignment stuff
+        return print("{:<20s}{:<15s}{:<10s}{:<10s}{:<10s}".format(\
+            self.name, self.wType,self.mast, self.vault, self.comp))
+        ##return print(str(self.name + " " + self.wType.rjust(10) + " " + self.mast + " " + self.vault
+          ##         + " " +  self.comp)) ##Use frmt alignment stuff
     
     def statList(self):
         return self.name, self.wType, self.mast, self.vault, self.comp
@@ -86,18 +88,22 @@ def menu_input(cmd, objs):
         pass
 
 def print_header():
-    pass
-
+    print("-" * 75)
+    print("{:<20s}".format("Name"))
+    print("-" * 75)
+    
 def print_all(data):
     print()
-    print("--------Commplete Prime List--------")
+    print("{:-^75}".format(" Commplete Prime List "))
+    print_header()
     for i in range(len(data)):
         data[i].print_str() ##use align, call string func for indiv. data
     print()
 
 def warfr_print(data):
     print()
-    print("--------Commplete Prime Warframe List--------")
+    print("{:-^75}".format(" Commplete Prime Warframe List "))
+    print_header()
     for i in range(len(data)):
         print
         if(data[i].get_wType()) == 'Warframe':
