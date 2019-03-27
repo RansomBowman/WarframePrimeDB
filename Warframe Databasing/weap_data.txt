@@ -1,0 +1,5 @@
+Galantine,Melee,No,No,Components
+Dual Ether,Melee,No,No,Components
+Frost Prime,Warframe,Yes,Yes,Comp
+Rubico Prime,Primary,Yes,No,Comp
+Lex Prime,Secondary,Yes,No,Comp
